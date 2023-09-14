@@ -1,14 +1,12 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { UserNewsletter } from './user-newsletter.entity';
+import { UserNewsletter } from '../../users/entities/user-newsletter.entity';
 
-@Entity('users')
-export class User {
+@Entity('newsletters')
+export class Newsletter {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  name: string;
-  @Column()
-  email: string;
+  title: string;
   @OneToMany(() => UserNewsletter, (userNewsletters) => userNewsletters.user)
   public userNewsletters: UserNewsletter[];
 }

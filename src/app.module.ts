@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FakerModule } from './faker/faker.module';
+import { NewslettersModule } from './newsletters/newsletters.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { FakerModule } from './faker/faker.module';
     }),
     UsersModule,
     FakerModule,
+    NewslettersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
