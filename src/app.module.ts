@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FakerModule } from './faker/faker.module';
 import { NewslettersModule } from './newsletters/newsletters.module';
+import { MailsModule } from './mails/mails.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { NewslettersModule } from './newsletters/newsletters.module';
     UsersModule,
     FakerModule,
     NewslettersModule,
+    MailsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
