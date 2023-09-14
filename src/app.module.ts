@@ -6,6 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FakerModule } from './faker/faker.module';
 import { NewslettersModule } from './newsletters/newsletters.module';
 import { MailsModule } from './mails/mails.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -19,6 +23,32 @@ import { MailsModule } from './mails/mails.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    MailerModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (config: ConfigService) => ({
+        transport: {
+          host: config.get('EMAIL_HOST'),
+          secure: false,
+          port: config.get('EMAIL_PORT'),
+          auth: {
+            user: config.get('EMAIL_USER'),
+            pass: config.get('EMAIL_PASSWORD'),
+          },
+        },
+        defaults: {
+          from: '"No Reply" <noreply@example.com>',
+        },
+        template: {
+          dir: join(__dirname, 'templates'),
+          adapter: new HandlebarsAdapter(),
+          options: {
+            strict: true,
+          },
+        },
+      }),
+      inject: [ConfigService],
+    }),
+    ConfigModule.forRoot(),
     UsersModule,
     FakerModule,
     NewslettersModule,

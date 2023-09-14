@@ -1,4 +1,4 @@
-import { Get, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { MailsService } from './mails.service';
 import { MailsController } from './mails.controller';
 
@@ -6,11 +6,4 @@ import { MailsController } from './mails.controller';
   controllers: [MailsController],
   providers: [MailsService],
 })
-export class MailsModule {
-  constructor(private readonly mailService: MailsService) {}
-  @Get('send-massive')
-  async sendMassive() {
-    await this.mailService.sendMassive();
-    return 'Send Massive Email Successfully';
-  }
-}
+export class MailsModule {}
