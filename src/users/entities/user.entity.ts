@@ -10,5 +10,5 @@ export class User {
   @Column()
   email: string;
   @OneToMany(() => UserNewsletter, (userNewsletters) => userNewsletters.user)
-  public userNewsletters: UserNewsletter[];
+  userNewsletters: UserNewsletter[];
 }

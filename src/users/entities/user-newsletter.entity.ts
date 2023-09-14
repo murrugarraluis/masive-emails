@@ -10,8 +10,8 @@ export class UserNewsletter {
   sendEmail: boolean;
 
   @ManyToOne(() => User, (user) => user.userNewsletters)
-  public user: User;
+  user: User;
 
   @ManyToOne(() => Newsletter, (newsletter) => newsletter.userNewsletters)
-  public newsletter: Newsletter;
+  newsletter: Newsletter;
 }

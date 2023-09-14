@@ -8,5 +8,5 @@ export class Newsletter {
   @Column()
   title: string;
   @OneToMany(() => UserNewsletter, (userNewsletters) => userNewsletters.user)
-  public userNewsletters: UserNewsletter[];
+  userNewsletters: UserNewsletter[];
 }
