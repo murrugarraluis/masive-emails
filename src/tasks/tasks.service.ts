@@ -6,9 +6,9 @@ import { NewslettersController } from '../newsletters/newsletters.controller';
 export class TasksService {
   private readonly logger = new Logger(TasksService.name);
   constructor(private readonly newsletterController: NewslettersController) {}
-  @Cron(CronExpression.EVERY_5_SECONDS)
+  @Cron(CronExpression.EVERY_10_SECONDS)
   async handleCron() {
-    this.logger.debug('Called every 5 seconds');
-    await this.newsletterController.sendNewsletterToUsers('17');
+    this.logger.debug('Called every 10 seconds');
+    await this.newsletterController.sendNewsletterToUsers();
   }
 }

@@ -6,16 +6,21 @@ import { UserNewsletterService } from '../users/services/user-newsletter.service
 
 @Controller('newsletters')
 export class NewslettersController {
-  private readonly NUMBER_USERS_SEND = 2;
+  private readonly NUMBER_USERS_SEND = 5;
   constructor(
     private readonly newslettersService: NewslettersService,
     private readonly userService: UsersService,
     private readonly userNewsletterService: UserNewsletterService,
     private readonly mailsService: MailsService,
   ) {}
-  async sendNewsletterToUsers(@Param('id') id: string) {
+  async getOneByName(title: string) {
+    return await this.newslettersService.getOneByTitle(title);
+  }
+  async sendNewsletterToUsers() {
     // RECUPERAR NEWSLETTER
-    const newsletter = await this.newslettersService.getOne(id);
+    const newsletter = await this.newslettersService.getOneByTitle(
+      'Newsletter Test',
+    );
 
     const userNewsletters =
       await this.userNewsletterService.getUsersForSendNewsletter(

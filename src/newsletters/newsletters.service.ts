@@ -8,6 +8,9 @@ export class NewslettersService {
     @InjectRepository(Newsletter)
     private readonly newsletterRepository: Repository<Newsletter>,
   ) {}
+  async getOneByTitle(title: string) {
+    return this.newsletterRepository.findOneBy({ title: title });
+  }
   async getOne(id: string) {
     const newsletter = await this.newsletterRepository.findOneBy({ id: +id });
     if (!newsletter) throw new NotFoundException('Newsletter Not Found');
