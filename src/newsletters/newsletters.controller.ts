@@ -13,7 +13,6 @@ export class NewslettersController {
     private readonly userNewsletterService: UserNewsletterService,
     private readonly mailsService: MailsService,
   ) {}
-  @Get(':id/send-email')
   async sendNewsletterToUsers(@Param('id') id: string) {
     // RECUPERAR NEWSLETTER
     const newsletter = await this.newslettersService.getOne(id);

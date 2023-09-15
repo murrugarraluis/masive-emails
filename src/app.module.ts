@@ -10,9 +10,12 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: '127.0.0.1',
@@ -53,6 +56,7 @@ import { join } from 'path';
     FakerModule,
     NewslettersModule,
     MailsModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
