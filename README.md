@@ -31,4 +31,18 @@ Para cargar datos de prueba en la aplicación, puedes utilizar el endpoint `/fak
 ```bash
 # Cargar datos de prueba
 $ curl -X GET http://localhost:3000/faker/seed
+```
+## Tecnologías y Conceptos Utilizados
+
+El proyecto utiliza las siguientes tecnologías y conceptos:
+
+- Nest.js
+- TypeORM para la gestión de la base de datos
+- Nodemailer para el envío de correos electrónicos
+- Tareas programadas
+- Modularización y organización del código fuente
+- Manipulación de datos falsos para pruebas
+## Autor
+
+- Luis Angel Murrugarra Astolingon
 
